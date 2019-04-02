@@ -1,11 +1,9 @@
 module.exports = {
-
   entry: './public/src/main.js',
   output: {
     filename: './public/build/bundle.js'
   },
   resolve: {
-
     alias: {
       vue: './vue.js'
     }
@@ -42,6 +40,10 @@ module.exports = {
     ]
   },
   devServer: {
-    port: 3000
+    compress: true,
+    port: 4000,
+    hot: true,
+    hotOnly: true,
+    watch: true
   }
 }
