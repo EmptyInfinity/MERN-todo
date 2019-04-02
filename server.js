@@ -1,17 +1,23 @@
-const express = require('express')
-const morgan = require('morgan')
-const path = require('path')
-const app = express()
-const mongoose = require('mongoose')
-const bodyParser = require('body-parser')
+/* jslint node: true */
+'use strict'
+
+var express = require('express')
+
+var morgan = require('morgan')
+
+var path = require('path')
+
+var app = express()
+
+var mongoose = require('mongoose')
+
+var bodyParser = require('body-parser')
 
 // Require configuration file defined in app/Config.js
-let config = require('./app/Config')
+var config = require('./app/Config')
 
 // Connect to database
-mongoose.connect(config.DB, {
-  useNewUrlParser: true
-})
+mongoose.connect(config.DB)
 
 // Sends static files  from the public path directory
 app.use(express.static(path.join(__dirname, '/public')))
@@ -23,13 +29,13 @@ app.use(bodyParser.json())
 
 app.use(bodyParser.urlencoded({extended: true}))
 
-let port = config.APP_PORT || 4000
+var port = config.APP_PORT || 4000
 
 app.listen(port) // Listen on port defined in config file
 
 console.log('App listening on port ' + port)
 
-let todoRoutes = require('./app/Routes')
+var todoRoutes = require('./app/Routes')
 
 //  Use routes defined in Route.js and prefix with todo
 app.use('/api', todoRoutes)

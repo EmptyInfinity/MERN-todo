@@ -1,10 +1,10 @@
 'use strict'
 
-let express = require('express')
+var express = require('express')
 
-let todoRoutes = express.Router()
+var todoRoutes = express.Router()
 
-let Todo = require('./Todo')
+var Todo = require('./Todo')
 
 // get all todo items in the db
 
@@ -37,7 +37,7 @@ todoRoutes.route('/add').post(function (req, res) {
 // delete a todo item
 
 todoRoutes.route('/delete/:id').get(function (req, res, next) {
-  let id = req.params.id
+  var id = req.params.id
   Todo.findByIdAndRemove(id, function (err, todo) {
     if (err) {
       return next(new Error('Todo was not found'))
@@ -49,7 +49,7 @@ todoRoutes.route('/delete/:id').get(function (req, res, next) {
 // update a todo item
 
 todoRoutes.route('/update/:id').post(function (req, res, next) {
-  let id = req.params.id
+  var id = req.params.id
   Todo.findById(id, function (error, todo) {
     if (error) {
       return next(new Error('Todo was not found'))

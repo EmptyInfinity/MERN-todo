@@ -1,8 +1,8 @@
-let mongoose = require('mongoose')
+var mongoose = require('mongoose')
 
 // Define collection and schema for todo Item
 
-let todo = new mongoose.Schema({
+var todo = new mongoose.Schema({
   name: {
     type: String
   },
